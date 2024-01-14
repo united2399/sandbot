@@ -74,7 +74,7 @@ def minimax_root(depth: int, board: chess.Board) -> chess.Move:
         elif not maximize and value <= best_move:
             best_move = value
             best_move_found = move
-
+    print ("best_move:" best_move)
     return best_move_found
 
 
