@@ -16,26 +16,27 @@ piece_value = {
 
 pawnEvalWhite = [
     0,  0,  0,  0,  0,  0,  0,  0,
-    5, 10, 10, -20, -20, 10, 10,  5,
-    5, -5, -10,  0,  0, -10, -5,  5,
-    0,  0,  0, 20, 20,  0,  0,  0,
-    5,  5, 10, 25, 25, 10,  5,  5,
-    10, 10, 20, 30, 30, 20, 10, 10,
+    5, 10, 10, 5, 5, 10, 10,  5,
+    10, 5, 5,  5,  5, 5, 5,  10,
+    0,  0,  0, 25, 25,  0,  0,  0,
+    5,  5, 10, 30, 30, 10,  5,  5,
+    10, 10, 20, 40, 40, 20, 10, 10,
     50, 50, 50, 50, 50, 50, 50, 50,
     0, 0, 0, 0, 0, 0, 0, 0
 ]
 pawnEvalBlack = list(reversed(pawnEvalWhite))
 
-knightEval = [
+knightEvalWhite = [
     -50, -40, -30, -30, -30, -30, -40, -50,
+    -40, -20, 0, 15, 15, 0, -20, -40,
+    -30, 0, 20, 10, 10, 20, 0, -30,
+    -30, 5, 15, 15, 15, 15, 5, -30,
+    -30, 0, 15, 15, 15, 15, 0, -30,
+    -30, 0, 0, 0, 0, 0, 0, -30,
     -40, -20, 0, 0, 0, 0, -20, -40,
-    -30, 0, 10, 15, 15, 10, 0, -30,
-    -30, 5, 15, 20, 20, 15, 5, -30,
-    -30, 0, 15, 20, 20, 15, 0, -30,
-    -30, 5, 10, 15, 15, 10, 5, -30,
-    -40, -20, 0, 5, 5, 0, -20, -40,
     -50, -40, -30, -30, -30, -30, -40, -50
 ]
+pawnEvalBlack = list(reversed(knightEvalWhite))
 
 bishopEvalWhite = [
     -20, -10, -10, -10, -10, -10, -10, -20,
@@ -149,7 +150,7 @@ def evaluate_piece(piece: chess.Piece, square: chess.Square, end_game: bool) -> 
     if piece_type == chess.PAWN:
         mapping = pawnEvalWhite if piece.color == chess.WHITE else pawnEvalBlack
     if piece_type == chess.KNIGHT:
-        mapping = knightEval
+        mapping = knightEvalWhite if piece.color == chess.WHITE else knightEvalBlack
     if piece_type == chess.BISHOP:
         mapping = bishopEvalWhite if piece.color == chess.WHITE else bishopEvalBlack
     if piece_type == chess.ROOK:
