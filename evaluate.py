@@ -124,7 +124,7 @@ def move_value(board: chess.Board, move: chess.Move, endgame: bool) -> float:
     current_move_value = capture_value + position_change
     if board.turn == chess.BLACK:
         current_move_value = -current_move_value
-
+        
     return current_move_value
 
 
@@ -189,6 +189,7 @@ def evaluate_board(board: chess.Board) -> float:
         value = piece_value[piece.piece_type] + evaluate_piece(piece, square, end_game)
         total += value if piece.color == chess.WHITE else -value
 
+    print (total)
     return total
 
 
