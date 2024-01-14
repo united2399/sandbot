@@ -74,7 +74,7 @@ queenEval = [
 
 kingEvalWhite = [
     20, 30, 10, 0, 0, 10, 30, 20,
-    20, 20, 0, 0, 0, 0, 20, 20,
+    15, 20, -5, -5, -5, -5, 20, 15,
     -10, -20, -20, -20, -20, -20, -20, -10,
     20, -30, -30, -40, -40, -30, -30, -20,
     -30, -40, -40, -50, -50, -40, -40, -30,
@@ -85,7 +85,7 @@ kingEvalWhite = [
 kingEvalBlack = list(reversed(kingEvalWhite))
 
 kingEvalEndGameWhite = [
-    50, -30, -30, -30, -30, -30, -30, -50,
+    -50, -30, -30, -30, -30, -30, -30, -50,
     -30, -30,  0,  0,  0,  0, -30, -30,
     -30, -10, 20, 30, 30, 20, -10, -30,
     -30, -10, 30, 40, 40, 30, -10, -30,
@@ -211,7 +211,7 @@ def check_end_game(board: chess.Board) -> bool:
         ):
             minors += 1
 
-    if queens == 0 or (queens == 2 and minors <= 1):
+    if (queens == 0 and minors <= 4) or (queens == 2 and minors <= 1):
         return True
 
     return False
