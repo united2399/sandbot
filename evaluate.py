@@ -189,7 +189,6 @@ def evaluate_board(board: chess.Board) -> float:
         value = piece_value[piece.piece_type] + evaluate_piece(piece, square, end_game)
         total += value if piece.color == chess.WHITE else -value
 
-    print (total)
     return total
 
 
